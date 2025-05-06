@@ -8,3 +8,10 @@
 /assets/completions/bat.zsh
 /assets/manual/bat.1
 /assets/metadata.yaml
+
+# local
+.cursor/
+.vscode/
+memory-bank/
+justfile
+*.json.gz
