@@ -1,2 +1,4 @@
 [build]
 rustc-wrapper = "sccache"
+# Restrict local builds to macOS only
+target = "aarch64-apple-darwin"

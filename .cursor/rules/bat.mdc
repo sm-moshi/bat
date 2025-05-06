@@ -1,0 +1,162 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+# bat Cursor Ruleset
+
+[project]
+name = "bat"
+description = "A cat(1) clone with syntax highlighting and Git integration, written in Rust."
+
+[principles]
+clarity = true
+simplicity = true
+maintainability = true
+style = "idiomatic-rust"
+documentation_language = "en-GB"
+require_commit_emoji = "🐹"
+
+[design]
+async = false
+concurrency = false
+unsafe_code = "forbidden unless documented under // SAFETY:"
+modularity = true
+cross_platform = true
+cli_tool = true
+integration_with_git = true
+syntax_highlighting = true
+
+[code.structure]
+module_per_concern = true
+mod_submodules = true
+prefer_snake_case = true
+constants_style = "SCREAMING_SNAKE_CASE"
+types_style = "PascalCase"
+internal_modules_hidden = true
+public_api_surface = "minimal"
+prefer_impl_blocks = true
+bin_target = "bat"
+workspace = false
+
+[code.error_handling]
+use_result = true
+use_question_mark = true
+custom_errors = "thiserror"
+exit_codes = true
+
+[testing]
+unit_tests = true
+integration_tests = true
+coverage_expectation = "high"
+test_tools = ["assert_cmd", "expect-test", "serial_test", "predicates", "tempfile"]
+run_tests_on_edit = true
+regression_tests = true
+
+[documentation]
+doc_comments_required = true
+style = "why-first"
+verify_with = "cargo doc --open"
+user_docs = ["README.md", "doc/"]
+contribution_docs = ["CONTRIBUTING.md"]
+
+[git]
+workflow = "gitflow"
+commit_format = "emoji + concise message"
+changelog_required = true
+changelog_file = "CHANGELOG.md"
+
+[tooling]
+recommended = [
+  "cargo-edit",
+  "cargo-watch",
+  "cargo-audit",
+  "cargo-nextest",
+  "cargo-udeps",
+  "cargo-shear",
+  "cargo-pgo",
+  "just"
+]
+ci = "GitHub Actions"
+local_ci = "act"
+coverage = "tarpaulin"
+formatting = "rustfmt (nightly)"
+linting = "clippy (nightly)"
+
+[build]
+build_system = "cargo"
+pgo_supported = true
+pgo_tool = "cargo-pgo"
+bolt_supported = true
+
+[cli]
+main_binary = "bat"
+completions_supported = true
+config_file_supported = true
+
+[contributing]
+open_issue_for_feature = true
+add_changelog_entry = true
+add_regression_tests = true
+follow_contributing_md = true
+
+[ai]
+reply_style = "developer-centric"
+thinking_tools = ["perplexity-mcp-zerver", "mcp-sequentialthinking-tools", "AI Memory"]
+pause_on_error = true
+explain_next_steps = true
+require_tests_after_edit = true
+
+[style]
+british_english = true
+doc_comments_why_first = true
+group_related_logic = true
+single_responsibility = true
+no_magic_numbers = true
+meaningful_names = true
+comments_explain_why = true
+no_unnecessary_abstractions = true
+idiomatic_rust = true
+
+[workflow]
+edit_one_file_at_a_time = true
+run_tests_after_edit = true
+stop_on_error = true
+explain_next_steps = true
+require_review_before_merge = true
+
+[release]
+changelog_update_required = true
+release_checklist = "doc/release-checklist.md"
+version_bump = true
+
+[project_specific]
+syntax_assets = "assets/"
+themes = "assets/themes/"
+customisation_docs = "doc/assets.md"
+support_multiple_languages = true
+highlight_git_changes = true
+auto_paging = true
+configurable_output = true
+
+[folders]
+src = "src/"
+build = "build/"
+diagnostics = "diagnostics/"
+doc = "doc/"
+.github = ".github/"
+
+[files]
+readme = "README.md"
+contributing = "CONTRIBUTING.md"
+changelog = "CHANGELOG.md"
+release_checklist = "doc/release-checklist.md"
+
+[notes]
+- Always check and update the changelog for user-facing or build/CI changes.
+- Add regression tests for all functional changes.
+- Document new features and changes in the README and user docs.
+- Use `just` for common workflows (build, test, lint, PGO, etc).
+- Use `cargo-pgo` for profile-guided optimisation.
+- Use British English in all documentation and comments.
+- All code and documentation must be clear, concise, and maintainable.
